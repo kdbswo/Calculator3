@@ -5,10 +5,11 @@ fun main() {
     var result = 0
     var sign = ""
     while (true) {
-        val input = readLine()!!
+        val input = readln() // readLine = nullable, readln = non-nullable
         val isInt = input.toIntOrNull()
 
-        if (input == "end") {
+        if (input == "-1") {
+            println("계산 종료")
             break
         }
 
@@ -29,7 +30,7 @@ fun main() {
                 println("부호를 입력해주세요")
                 continue
             } else {
-                if (input == "+" || input == "-" || input == "*" || input == "/") {
+                if (input == "+" || input == "-" || input == "*" || input == "/" || input == "%") {
                     sign = input
                     println("입력부호: $sign")
                     count++
@@ -48,12 +49,24 @@ fun main() {
                 continue
             } else {
                 println("${result}${sign}${input} =")
-                var calculator = Calculator(input.toInt(), result)
                 when (sign) {
-                    "+" -> result = calculator.add()
-                    "-" -> result = calculator.minus()
-                    "*" -> result = calculator.multiply()
-                    "/" -> result = calculator.divide()
+                    "+" -> {
+                        val addOperation = AddOperation()
+                        result = addOperation.calculator(input.toInt(), result)
+                    }
+                    "-" -> {
+                        val subtractOperation = SubtractOperation()
+                        result = subtractOperation.calculator(input.toInt(), result)
+                    }
+                    "*" -> {
+                        val multiplyOperation = MultiplyOperation()
+                        result = multiplyOperation.calculator(input.toInt(), result)
+                    }
+                    "/" -> {
+                        val divideOperation = DivideOperation()
+                        result = divideOperation.calculator(input.toInt(), result)
+                    }
+//                    "%" -> result = calculator.remainder()
                 }
 
             }
