@@ -8,7 +8,8 @@ fun main() {
         val input = readLine()!!
         val isInt = input.toIntOrNull()
 
-        if (input == "end") {
+        if (input == "-1") {
+            println("계산 종료")
             break
         }
 
@@ -29,7 +30,7 @@ fun main() {
                 println("부호를 입력해주세요")
                 continue
             } else {
-                if (input == "+" || input == "-" || input == "*" || input == "/") {
+                if (input == "+" || input == "-" || input == "*" || input == "/" || input == "%") {
                     sign = input
                     println("입력부호: $sign")
                     count++
@@ -54,6 +55,7 @@ fun main() {
                     "-" -> result = calculator.minus()
                     "*" -> result = calculator.multiply()
                     "/" -> result = calculator.divide()
+                    "%" -> result = calculator.remainder()
                 }
 
             }

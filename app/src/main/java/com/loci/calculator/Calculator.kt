@@ -28,4 +28,9 @@ class Calculator(val input: Int, result: Int) {
         return temp
     }
 
+    fun remainder(): Int {
+        temp %= input
+        return temp
+    }
+
 }
