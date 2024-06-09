@@ -26,19 +26,22 @@ fun main() {
         }
 
         if (count % 2 == 0) {
-            if (isInt != null) {
+            when (input) {
+                "1" -> sign = "+"
+                "2" -> sign = "-"
+                "3" -> sign = "*"
+                "4" -> sign = "/"
+                else -> {
+                    println("$input 은 유효한 입력이 아닙니다.(1 = +, 2 = -, 3 = *, 4 = /)")
+                    continue
+                }
+            }
+            if (sign.toIntOrNull() != null) {
                 println("부호를 입력해주세요")
                 continue
             } else {
-                if (input == "+" || input == "-" || input == "*" || input == "/" || input == "%") {
-                    sign = input
                     println("입력부호: $sign")
                     count++
-                } else {
-                    println("${input}은 유효한 부호가 아닙니다.")
-                    continue
-                }
-
             }
 
         } else {
@@ -66,7 +69,6 @@ fun main() {
                         val divideOperation = DivideOperation()
                         result = divideOperation.calculator(input.toInt(), result)
                     }
-//                    "%" -> result = calculator.remainder()
                 }
 
             }
